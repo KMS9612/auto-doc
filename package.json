@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "JS or TS Automated Documentation Tool",
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "glob": "^11.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.12"
