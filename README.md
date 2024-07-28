@@ -1,12 +1,12 @@
 # auto-document
 
-### This Tool detect the Functions, Comments, Parameters and Returns of your node.js project and help document them in doc.html file.
+This Tool detect the Functions, Comments, Parameters and Returns of your node.js project and help document them in doc.html file.
 
-#### (이 도구는 당신의 Node.js프로젝트의 함수,주석,매개변수,반환을 감지해 doc.html 혹은 doc.md(개발예정)으로 만들어 줍니다.)
+(이 도구는 당신의 Node.js프로젝트의 함수,주석,매개변수,반환을 감지해 doc.html 혹은 doc.md(개발예정)으로 만들어 줍니다.)
 
-### You don't need to learn complicated config or How to Use, Just Code and Import One Start Doc
+You don't need to learn complicated config or How to Use, Just Code and Import One Start Doc
 
-#### (복잡한 설정이나 사용법을 배울 필요 없이 코딩를 작성 하고 startDoc 하나만 Import하면 됩니다.)
+(복잡한 설정이나 사용법을 배울 필요 없이 코딩를 작성 하고 startDoc 하나만 Import하면 됩니다.)
 
 # Installation(설치)
 
