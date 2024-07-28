@@ -143,7 +143,7 @@ function saveAsHTML(resultArr: IResultArr[]) {
   fs.writeFileSync("doc.html", htmlContent, "utf-8");
 }
 
-function startDoc() {
+export function startDoc() {
   getConfig();
   readJSFile();
   console.log(4);

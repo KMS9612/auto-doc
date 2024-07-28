@@ -1,11 +1,10 @@
 {
   "name": "auto-document",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.30",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "convert": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "postinstall": "cp node_modules/auto-document/doc.html ./"
+    "convert": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
   },
   "author": "KMS9612",
   "license": "ISC",
@@ -16,5 +15,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.12"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

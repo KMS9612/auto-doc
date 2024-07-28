@@ -32,6 +32,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.startDoc = startDoc;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const console_lang_1 = require("./language_pack/console/console.lang");
