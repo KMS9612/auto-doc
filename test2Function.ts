@@ -1,13 +1,21 @@
 /** outFunc */
-export default function hello() {
+function hello() {
   const hello = "hello";
 
   console.log(hello);
 
   /** innerFunc */
-  function world() {
-    console.log("world");
+  function world(world: string) {
+    console.log(world);
+    return 2;
+  }
+
+  /** innerFunc Two */
+  function InnerTwo() {
+    return 3;
   }
 
   return hello;
 }
+
+export default hello;
