@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "convert": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "postinstall": "cp node_modules/auto-document/doc.html ./"
   },
   "author": "KMS9612",
