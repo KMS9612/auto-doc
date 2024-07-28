@@ -1,13 +1,16 @@
 {
   "name": "auto-document",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "convert": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
   },
-  "author": "KMS9612",
-  "license": "ISC",
+  "author": {
+    "name": "KMS9612",
+    "url": "https://github.com/KMS9612/"
+  },
+  "license": "MIT",
   "description": "JS or TS Automated Documentation Tool",
   "dependencies": {
     "concurrently": "^8.2.2",
@@ -18,5 +21,10 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "document",
+    "node.js",
+    "Documentation"
   ]
 }
