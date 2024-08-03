@@ -38,6 +38,8 @@ const path = __importStar(require("path"));
 const console_lang_1 = require("./language_pack/console/console.lang");
 const glob_1 = require("glob");
 const function_regs_1 = require("./regs/function.regs");
+const combineSamePath_1 = require("./lib/function/combineSamePath");
+const saveAsHTML_1 = require("./lib/func_html/saveAsHTML");
 console.log("----------Start Auto Documentation----------");
 let configStr = "";
 let parsedConfig = null;
@@ -92,7 +94,8 @@ function fileConvertToString(filePath) {
         });
     }
     console.table(resultArr);
-    saveAsHTML(resultArr);
+    (0, saveAsHTML_1.saveAsHTML)(resultArr);
+    (0, combineSamePath_1.combineSamePath)(resultArr, filePath);
     return;
 }
 function readJSFile() {
@@ -112,56 +115,10 @@ function readJSFile() {
         }
     });
 }
-function generateTableRows(resultArr) {
-    return resultArr
-        .map((func) => `
-      <table>
-          <tr>
-            <th>FilePath</th>
-            <th>Function Name</th>
-            <th>Comment</th>
-            <th>Parameters</th>
-            <th>Return Value</th>
-          </tr>
-          <tr>
-            <td>${func.filePath}</td>
-            <td>${func.functionName}</td>
-            <td>${func.comment}</td>
-            <td>${func.params}</td>
-            <td>${func.returnValue}</td>
-          </tr>
-      </table>
-  `)
-        .join("");
-}
-function saveAsHTML(resultArr) {
-    const table = generateTableRows(resultArr);
-    const htmlContent = `
-  <!DOCTYPE html>
-  <html lang="ko">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Function List</title>
-      <style>
-          body { font-family: Arial, sans-serif; }
-          table { width: 100%; border-collapse: collapse; margin-bottom:20px; }
-          th, td {width:25%; padding: 8px; text-align: left; border: 1px solid #ddd; }
-          th { background-color: #f2f2f2; }
-      </style>
-  </head>
-  <body>
-      <h1>Function List</h1>
-      ${table}
-  </body>
-  </html>
-  `;
-    fs.writeFileSync("doc.html", htmlContent, "utf-8");
-}
 function startDoc() {
     getConfig();
     readJSFile();
-    console.log(4);
+    console.log(2);
     return;
 }
 startDoc();

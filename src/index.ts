@@ -5,6 +5,8 @@ import { IConfigTypes } from "./types/config.type";
 import { glob } from "glob";
 import { IResultArr } from "./types/index.type";
 import { functionReg, innerFunctionReg } from "./regs/function.regs";
+import { combineSamePath } from "./lib/function/combineSamePath";
+import { saveAsHTML } from "./lib/func_html/saveAsHTML";
 
 console.log("----------Start Auto Documentation----------");
 
@@ -71,6 +73,7 @@ function fileConvertToString(filePath: string) {
   }
   console.table(resultArr);
   saveAsHTML(resultArr);
+  combineSamePath(resultArr, filePath);
   return;
 }
 
@@ -91,62 +94,10 @@ async function readJSFile() {
   }
 }
 
-function generateTableRows(resultArr: IResultArr[]) {
-  return resultArr
-    .map(
-      (func) => `
-      <table>
-          <tr>
-            <th>FilePath</th>
-            <th>Function Name</th>
-            <th>Comment</th>
-            <th>Parameters</th>
-            <th>Return Value</th>
-          </tr>
-          <tr>
-            <td>${func.filePath}</td>
-            <td>${func.functionName}</td>
-            <td>${func.comment}</td>
-            <td>${func.params}</td>
-            <td>${func.returnValue}</td>
-          </tr>
-      </table>
-  `
-    )
-    .join("");
-}
-
-function saveAsHTML(resultArr: IResultArr[]) {
-  const table = generateTableRows(resultArr);
-
-  const htmlContent = `
-  <!DOCTYPE html>
-  <html lang="ko">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Function List</title>
-      <style>
-          body { font-family: Arial, sans-serif; }
-          table { width: 100%; border-collapse: collapse; margin-bottom:20px; }
-          th, td {width:25%; padding: 8px; text-align: left; border: 1px solid #ddd; }
-          th { background-color: #f2f2f2; }
-      </style>
-  </head>
-  <body>
-      <h1>Function List</h1>
-      ${table}
-  </body>
-  </html>
-  `;
-
-  fs.writeFileSync("doc.html", htmlContent, "utf-8");
-}
-
 export function startDoc() {
   getConfig();
   readJSFile();
-  console.log(4);
+  console.log(2);
   return;
 }
 
