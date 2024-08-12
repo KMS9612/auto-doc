@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.combineSamePath = combineSamePath;
-function combineSamePath(resultArr, filePath) {
+const saveAsHTML_1 = require("../func_html/saveAsHTML");
+function combineSamePath(resultArr, lang) {
     let arr = [...resultArr];
     const groupedData = arr.reduce((acc, current) => {
         const { filePath } = current;
@@ -13,6 +14,6 @@ function combineSamePath(resultArr, filePath) {
         acc[filePath].push(current);
         return acc;
     }, {});
-    console.log(groupedData);
+    (0, saveAsHTML_1.saveAsHTML)(groupedData, lang);
     return;
 }

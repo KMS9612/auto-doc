@@ -5,3 +5,7 @@ export interface IResultArr {
   returnValue: string;
   filePath: string;
 }
+
+export interface IGroupedData {
+  [key: string]: IResultArr[];
+}

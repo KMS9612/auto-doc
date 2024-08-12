@@ -1,7 +1,7 @@
 import { IResultArr } from "../../types/index.type";
 import { saveAsHTML } from "../func_html/saveAsHTML";
 
-export function combineSamePath(resultArr: IResultArr[], filePath: string) {
+export function combineSamePath(resultArr: IResultArr[], lang: string) {
   let arr = [...resultArr];
   const groupedData = arr.reduce((acc: any, current: IResultArr) => {
     const { filePath } = current;
@@ -14,6 +14,7 @@ export function combineSamePath(resultArr: IResultArr[], filePath: string) {
     acc[filePath].push(current);
     return acc;
   }, {});
-  console.log(groupedData);
+
+  saveAsHTML(groupedData, lang);
   return;
 }

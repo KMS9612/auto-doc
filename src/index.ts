@@ -6,7 +6,6 @@ import { glob } from "glob";
 import { IResultArr } from "./types/index.type";
 import { functionReg, innerFunctionReg } from "./regs/function.regs";
 import { combineSamePath } from "./lib/function/combineSamePath";
-import { saveAsHTML } from "./lib/func_html/saveAsHTML";
 
 console.log("----------Start Auto Documentation----------");
 
@@ -14,13 +13,18 @@ let configStr = "";
 let parsedConfig: IConfigTypes | null = null;
 let lang = "";
 let resultArr: IResultArr[] = [];
+let defaultConfigPath = {
+  product: "node_modules/auto-document/config/default_config.json",
+  test: "config/default_config.json",
+};
 
 /** Read auto.doc.json and Apply Config */
 function getConfig() {
   const configPath = path.join(process.cwd(), "auto.doc.json");
 
+  // If User did not make auto.doc.json, apply Default Config
   if (!fs.existsSync(configPath)) {
-    configStr = fs.readFileSync("./src/config/default_config.json", "utf-8");
+    configStr = fs.readFileSync(defaultConfigPath.test, "utf-8");
     parsedConfig = JSON.parse(configStr).config;
 
     if (parsedConfig) {
@@ -72,8 +76,7 @@ function fileConvertToString(filePath: string) {
     });
   }
   console.table(resultArr);
-  saveAsHTML(resultArr);
-  combineSamePath(resultArr, filePath);
+  combineSamePath(resultArr, lang);
   return;
 }
 
@@ -97,7 +100,6 @@ async function readJSFile() {
 export function startDoc() {
   getConfig();
   readJSFile();
-  console.log(2);
   return;
 }
 

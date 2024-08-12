@@ -1,7 +1,0 @@
-{
-  "config": {
-    "path": ["**/*.js", "**/*.ts"],
-    "lang": "ko",
-    "fileExtension": "HTML"
-  }
-}

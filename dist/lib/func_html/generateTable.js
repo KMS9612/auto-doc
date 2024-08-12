@@ -1,25 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateTableRows = generateTableRows;
-function generateTableRows(resultArr) {
-    return resultArr
-        .map((func) => `
+const console_lang_1 = require("../../language_pack/console/console.lang");
+function generateTableRows(resultProperties, lang) {
+    return `
       <table>
           <tr>
-            <th>FilePath</th>
-            <th>Function Name</th>
-            <th>Comment</th>
-            <th>Parameters</th>
-            <th>Return Value</th>
+            <th>${console_lang_1.langPack[lang].tableFName}</th>
+            <th>${console_lang_1.langPack[lang].tableComment}</th>
+            <th>${console_lang_1.langPack[lang].tableParam}</th>
+            <th>${console_lang_1.langPack[lang].tableRValue}</th>
           </tr>
           <tr>
-            <td>${func.filePath}</td>
-            <td>${func.functionName}</td>
-            <td>${func.comment}</td>
-            <td>${func.params}</td>
-            <td>${func.returnValue}</td>
+            <td>${resultProperties.functionName}</td>
+            <td>${resultProperties.comment}</td>
+            <td>${resultProperties.params}</td>
+            <td>${resultProperties.returnValue}</td>
           </tr>
       </table>
-  `)
-        .join("");
+  `;
 }

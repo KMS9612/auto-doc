@@ -1,17 +1,25 @@
 import * as fs from "fs";
-import { IResultArr } from "../../types/index.type";
+import { IGroupedData, IResultArr } from "../../types/index.type";
 import { generateTableRows } from "./generateTable";
+import { langPack } from "../../language_pack/console/console.lang";
 
-export function saveAsHTML(resultArr: IResultArr[]) {
-  const table = generateTableRows(resultArr);
+export function saveAsHTML(resultArr: IGroupedData, lang: string) {
+  let table = `<h1>${langPack[lang].functionList}</h1>`;
+
+  for (let file in resultArr) {
+    table += `<h1>${file}</h1>`;
+    resultArr[file].forEach((el: IResultArr) => {
+      table += generateTableRows(el, lang);
+    });
+  }
 
   const htmlContent = `
   <!DOCTYPE html>
-  <html lang="ko">
+  <html lang=${lang}>
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Function List</title>
+      <title>${langPack[lang].functionList}</title>
       <style>
           body { font-family: Arial, sans-serif; }
           table { width: 100%; border-collapse: collapse; margin-bottom:20px; }
@@ -20,7 +28,6 @@ export function saveAsHTML(resultArr: IResultArr[]) {
       </style>
   </head>
   <body>
-      <h1>Function List</h1>
       ${table}
   </body>
   </html>

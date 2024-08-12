@@ -26,15 +26,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.saveAsHTML = saveAsHTML;
 const fs = __importStar(require("fs"));
 const generateTable_1 = require("./generateTable");
-function saveAsHTML(resultArr) {
-    const table = (0, generateTable_1.generateTableRows)(resultArr);
+const console_lang_1 = require("../../language_pack/console/console.lang");
+function saveAsHTML(resultArr, lang) {
+    let table = `<h1>${console_lang_1.langPack[lang].functionList}</h1>`;
+    for (let file in resultArr) {
+        table += `<h1>${file}</h1>`;
+        resultArr[file].forEach((el) => {
+            table += (0, generateTable_1.generateTableRows)(el, lang);
+        });
+    }
     const htmlContent = `
   <!DOCTYPE html>
-  <html lang="ko">
+  <html lang=${lang}>
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Function List</title>
+      <title>${console_lang_1.langPack[lang].functionList}</title>
       <style>
           body { font-family: Arial, sans-serif; }
           table { width: 100%; border-collapse: collapse; margin-bottom:20px; }
@@ -43,7 +50,6 @@ function saveAsHTML(resultArr) {
       </style>
   </head>
   <body>
-      <h1>Function List</h1>
       ${table}
   </body>
   </html>

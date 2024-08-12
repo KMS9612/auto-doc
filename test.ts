@@ -1,6 +1,6 @@
 /** hello */
-function hello() {
-  const hello = "hello";
+function hello(hello: string, wolrd: string) {
+  const hello1 = "hello";
 
   console.log(hello);
 
