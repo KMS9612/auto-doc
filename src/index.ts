@@ -24,7 +24,7 @@ function getConfig() {
 
   // If User did not make auto.doc.json, apply Default Config
   if (!fs.existsSync(configPath)) {
-    configStr = fs.readFileSync(defaultConfigPath.test, "utf-8");
+    configStr = fs.readFileSync(defaultConfigPath.product, "utf-8");
     parsedConfig = JSON.parse(configStr).config;
 
     if (parsedConfig) {
